@@ -1,9 +1,9 @@
 name: Generate release-artifacts
 
 on:
-  release:
-    types:
-      - created
+  push:
+    branches:
+      - main
 
 jobs:
   generate:
@@ -20,3 +20,7 @@ jobs:
           name: 'anime-downloader'
           compress: 'true'
           dest: 'dist'
+      - uses: actions/upload-artifact@v3
+        with:
+          name: anime-downloader
+          path: dist
